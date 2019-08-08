@@ -356,6 +356,11 @@ def gene_ttest(edgeList, one_value, group_value, n_genes, gene2num):
 		
 	return rank,statistic_list
 
+def ttest_onesmaple(one_value,group_values):
+
+	statistic_value, _ = stats.ttest_1samp(group_values,one_value)
+	
+	return statistic_value
 	
 def make_sampleDict(sampleList):
 	for i, sam in enumerate(sampleList):
