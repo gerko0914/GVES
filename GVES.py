@@ -77,7 +77,11 @@ def main():
                     geneCountDict[gene] = 1
     
     count_sort = sorted(geneCountDict.items(),key=itemgetter(1),reverse=True)
-    count_genes = np.array(count_sort)[:,0]
+    count_genes_idx = np.array(count_sort)[:,0]
+    
+    count_genes = []
+    for idx in count_genes_idx:
+        count_genes.append(new_num2gene[idx])
     
     print(">>> Make Sort gene2num num2gene")
 
@@ -91,8 +95,6 @@ def main():
             sort_gene2num[gene] = i+path_gene
             sort_num2gene[i+path_gene] = gene
 
-    np.save("./sort_gene2num.npy",sort_gene2num)
-    np.save("./sort_num2gene.npy",sort_num2gene)
     
     print(">>> Generate gene vector")
     for i, sam in enumerate(samples):
